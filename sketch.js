@@ -60,20 +60,6 @@ function draw(){
   fedTime.on("value", function(data) {
     lastFed = data.val();
   })
-  
-  fill(255);
-  textSize(15);
-
-  if(lastFed >= 12){
-  
-    text("Last Fed : " + lastFed % 12 + " PM", 350, 65);
-  } else if(lastFed === 0) {
-  
-    text("Last Fed : 12 AM", 350, 65)
-  } else {
-  
-    text("Last Fed : " + lastFed + " AM", 350, 65);
-  }
 
   if(gameState != "Hungry") {
     feedButton.hide();
@@ -99,6 +85,21 @@ function draw(){
   } else {
     update("Hungry");
     foodObj.display();
+  }
+
+  fill("yellow");
+  stroke(4);
+  textSize(25);
+
+  if(lastFed >= 12){
+  
+    text("Last Fed : " + lastFed % 12 + " PM", 750, 50);
+  } else if(lastFed === 0) {
+  
+    text("Last Fed : 12 AM", 750, 65)
+  } else {
+  
+    text("Last Fed : " + lastFed + " AM", 750, 50);
   }
 
   //console.log(currentTime);
