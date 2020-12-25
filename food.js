@@ -30,7 +30,7 @@ class Food {
     }
 
     washRoom() {
-      background(washRoom, 500, 250);
+      background(washroom, 500, 250);
     }
 
     display(){
