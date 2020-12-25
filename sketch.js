@@ -28,7 +28,7 @@ function setup() {
  
   foodObj = new Food()
   dog = createSprite(700,250,10,10);
-  //dog.addImage(dogImg1);
+  dog.addImage(dogImg1);
   dog.scale = 0.15;
   
  
@@ -61,17 +61,6 @@ function draw(){
     lastFed = data.val();
   })
 
-  if(gameState != "Hungry") {
-    feedButton.hide();
-    addButton.hide();
-    dog.remove();
-  } else {
-    feedButton.show();
-    addButton.show();
-    dog.addImage(dogImg1);
-    //console.log(dog);
-  }
-
   currentTime = hour();
   if(currentTime == (lastFed + 1)) {
     update("Playing");
@@ -85,6 +74,17 @@ function draw(){
   } else {
     update("Hungry");
     foodObj.display();
+  }
+
+  if(gameState != "Hungry") {
+    feedButton.hide();
+    addButton.hide();
+    dog.remove();
+  } else {
+    feedButton.show();
+    addButton.show();
+    dog.addImage(dogImg2);
+    //console.log(dog);
   }
 
   fill("yellow");
@@ -141,7 +141,6 @@ function addFood(){
 
 function feedDog(){
 
-  dog.addImage(dogImg2);
   foodObj.updateFoodStock(foodObj.getFoodStock() - 1);
   database.ref('/').set({
     Food: foodObj.getFoodStock(),
